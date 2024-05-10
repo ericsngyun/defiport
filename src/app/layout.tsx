@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import NavBar from "~/components/NavBar";
+import { TooltipProvider } from "~/components/ui/tooltip";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,8 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className={`font-sans ${inter.variable}`}>
-          <NavBar />
-          <TRPCReactProvider>{children}</TRPCReactProvider>
+
+          {/* <NavBar /> */}
+          <TooltipProvider>
+            <TRPCReactProvider>
+              {children}
+            </TRPCReactProvider>
+          </TooltipProvider>
         </body>
     </html>
   );
